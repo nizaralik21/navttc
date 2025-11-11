@@ -1,0 +1,65 @@
+.product-card {
+  height: 200px;
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.img-box {
+  height: 500px !important;
+  background: #f6f6f6;
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product-img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-img {
+  transform: scale(1.05);
+}
+
+.icon-btn {
+  background: #fff;
+  border-radius: 50%;
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.icon-btn:hover {
+  background: #f8d7da;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 3px;
+}
+
+
+.swiper-button-prev::after,
+.swiper-button-next::after {
+  color: black;
+  font-size: 22px;
+  font-weight: bold;
+}
+.mySwiper .swiper-slide{
+  width: 100%;
+}
+.Card{
+  height: 100%;
+}

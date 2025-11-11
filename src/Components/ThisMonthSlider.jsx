@@ -1,0 +1,140 @@
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
+import { FaHeart, FaEye, FaStar } from "react-icons/fa";
+import "swiper/css";
+import "swiper/css/navigation";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../App.css";
+import "./Cards.module.css";
+
+const Products = [
+  {
+    id: 1,
+    title: "HAVIT HV-G92 Gamepad",
+    discountPercent: 40,
+    price: 120,
+    oldPrice: 160,
+    rating: 3,
+    ratingCount: 88,
+    img: "/images/Coat.png",
+  },
+  {
+    id: 2,
+    title: "AK-900 Wired Keyboard",
+    discountPercent: 35,
+    price: 960,
+    oldPrice: 1160,
+    rating: 5,
+    ratingCount: 75,
+    img: "/images/Bag.png",
+  },
+  {
+    id: 3,
+    title: "IPS LCD Gaming Monitor",
+    discountPercent: 30,
+    price: 370,
+    oldPrice: 400,
+    rating: 5,
+    ratingCount: 99,
+    img: "/images/Cooler.png",
+  },
+  {
+    id: 4,
+    title: "S-Series Comfort Chair",
+    discountPercent: 25,
+    price: 375,
+    oldPrice: 400,
+    rating: 4,
+    ratingCount: 99,
+    img: "/images/Table.png",
+  },
+];
+
+const ThisMonthSlider = () => {
+  return (
+    <div className="container py-5">
+      {/* Header */}
+      <div className="d-flex align-items-center mb-3">
+        <div className="bg-danger rounded me-2" style={{ width: "6px", height: "25px" }}></div>
+        <span className="text-danger fw-semibold">Today's</span>
+      </div>
+
+      <div className="d-flex justify-content-between align-items-center mb-4">
+        <h2 className="fw-bold">Flash Sales</h2>
+        <div className="d-flex gap-2">
+          <button className="btn btn-light rounded-circle p-2">←</button>
+          <button className="btn btn-light rounded-circle p-2">→</button>
+        </div>
+      </div>
+
+      {/* Swiper Slider */}
+      <Swiper
+        slidesPerView={4}
+        spaceBetween={20}
+        navigation={true}
+        modules={[Navigation]}
+        className="mySwiper "
+        breakpoints={{
+          0: { slidesPerView: 1 },
+          576: { slidesPerView: 2 },
+          992: { slidesPerView: 4 },
+        }}
+      >
+        {Products.map((item) => (
+          <SwiperSlide key={item.id}>
+            <div className="card border-0 shadow-sm position-relative product-card">
+              {/* Discount Badge */}
+              <div className="badge bg-danger position-absolute start-0 m-2">
+                -{item.discountPercent}%
+              </div>
+
+              {/* Icons */}
+              <div className="position-absolute top-0 end-0 m-2 d-flex flex-column gap-2">
+                <button className="btn btn-light p-1 rounded-circle shadow-sm">
+                  <FaHeart />
+                </button>
+                <button className="btn btn-light p-1 rounded-circle shadow-sm">
+                  <FaEye />
+                </button>
+              </div>
+
+              {/* Product Image */}
+             <div className="image1"><img src={item.img} className="card-img-top p-3" alt={item.title} /></div>
+{/* Add to Cart */}
+                <button className="btn btn-dark w-100 add-cart-btn">Add To Cart</button>
+              {/* Product Info */}
+              <div className="card-body text-center">
+                <h6 className="fw-semibold mb-2">{item.title}</h6>
+
+                <div className="d-flex justify-content-center gap-2 mb-2">
+                  <span className="text-danger fw-bold">${item.price}</span>
+                  <span className="text-muted text-decoration-line-through">
+                    ${item.oldPrice}
+                  </span>
+                </div>
+
+                {/* Rating */}
+                <div className="d-flex justify-content-center align-items-center text-warning mb-3">
+                  {[...Array(item.rating)].map((_, i) => (
+                    <FaStar key={i} />
+                  ))}
+                  <span className="text-muted ms-1">({item.ratingCount})</span>
+                </div>
+
+                
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      {/* View All Button */}
+      <div className="text-center mt-5">
+        <button className="btn btn-danger px-4 py-2">View All Products</button>
+      </div>
+    </div>
+  );
+};
+
+export default ThisMonthSlider;
