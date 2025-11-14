@@ -6,8 +6,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
-import "./Cards.module.css";
-
 
 const Products = [
   {
@@ -54,7 +52,7 @@ const Products = [
 
 const Cards = () => {
   return (
-    <div className="container py-5">
+    <div className="container py-5 position-relative">
       {/* Header */}
       <div className="d-flex align-items-center mb-3">
         <div className="bg-danger rounded me-2" style={{ width: "6px", height: "25px" }}></div>
@@ -64,8 +62,8 @@ const Cards = () => {
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2 className="fw-bold">Flash Sales</h2>
         <div className="d-flex gap-2">
-          <button className="btn btn-light rounded-circle p-2">←</button>
-          <button className="btn btn-light rounded-circle p-2">→</button>
+          <button className="btn btn-light rounded-circle p-2 swiper-button-prev-custom">←</button>
+          <button className="btn btn-light rounded-circle p-2 swiper-button-next-custom">→</button>
         </div>
       </div>
 
@@ -73,18 +71,34 @@ const Cards = () => {
       <Swiper
         slidesPerView={4}
         spaceBetween={20}
-        navigation={true}
+        navigation={{
+          nextEl: '.swiper-button-next-custom',
+          prevEl: '.swiper-button-prev-custom',
+        }}
         modules={[Navigation]}
-        className="mySwiper "
+        className="mySwiper"
         breakpoints={{
-          0: { slidesPerView: 1 },
-          576: { slidesPerView: 2 },
-          992: { slidesPerView: 4 },
+          0: { 
+            slidesPerView: 1,
+            spaceBetween: 10
+          },
+          576: { 
+            slidesPerView: 2,
+            spaceBetween: 15  
+          },
+          768: { 
+            slidesPerView: 3,
+            spaceBetween: 15
+          },
+          992: { 
+            slidesPerView: 4,
+            spaceBetween: 20
+          },
         }}
       >
         {Products.map((item) => (
           <SwiperSlide key={item.id}>
-            <div className="card border-0 shadow-sm position-relative product-card">
+            <div className="card border-0 shadow-sm position-relative product-card h-100 mx-auto" style={{maxWidth: "280px"}}>
               {/* Discount Badge */}
               <div className="badge bg-danger position-absolute start-0 m-2">
                 -{item.discountPercent}%
@@ -101,11 +115,20 @@ const Cards = () => {
               </div>
 
               {/* Product Image */}
-              <div className="image"><img src={item.img} className="bg card-img-top p-3" alt={item.title} /></div>
-{/* Add to Cart */}
-                <button className="btn btn-dark w-100 add-cart-btn">Add To Cart</button>
+              <div className="image h-100">
+                <img 
+                  src={item.img} 
+                  className="bg card-img-top p-3 w-100 h-100" 
+                  alt={item.title}
+                  style={{objectFit: "contain"}}
+                />
+              </div>
+              
+
               {/* Product Info */}
-              <div className="card-body text-center">
+             <div><button className="btn btn-dark w-100 add-cart-btn mt-auto">Add To Cart</button>
+              </div>
+              <div className="card-body text-center d-flex flex-column">
                 <h6 className="fw-semibold mb-2">{item.title}</h6>
 
                 <div className="d-flex justify-content-center gap-2 mb-2">
@@ -123,9 +146,9 @@ const Cards = () => {
                   <span className="text-muted ms-1">({item.ratingCount})</span>
                 </div>
 
+                {/* Add to Cart */}
                 
-              </div>
-            </div>
+            </div></div>
           </SwiperSlide>
         ))}
       </Swiper>

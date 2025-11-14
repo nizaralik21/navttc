@@ -1,19 +1,18 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FiSearch } from "react-icons/fi";
-import { FiShoppingCart } from "react-icons/fi";
-import { FiHeart } from "react-icons/fi";
-
-
+import { FiSearch, FiShoppingCart, FiHeart } from "react-icons/fi";
 
 export const Navbar = () => {
   return (
-    <div className= "container py-4">
-      <nav className="navbar navbar-expand-lg bg-body-tertiary">
+    <div className="container py-3">
+      <nav className="navbar navbar-expand-lg navbar-light bg-body-tertiary">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
+          {/* Brand */}
+          <Link className="navbar-brand fw-bold fs-3" to="/">
             Exclusive
           </Link>
+          
+          {/* Mobile Toggle */}
           <button
             className="navbar-toggler"
             type="button"
@@ -25,7 +24,10 @@ export const Navbar = () => {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
+
+          {/* Collapsible Content */}
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            {/* Navigation Links */}
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link to="/" className="nav-link active" aria-current="page">
@@ -34,41 +36,44 @@ export const Navbar = () => {
               </li>
               <li className="nav-item">
                 <Link to="/contact" className="nav-link">
-                  contact
+                  Contact
                 </Link>
               </li>
-                            <li className="nav-item">
-                <Link to="/About" className="nav-link">
+              <li className="nav-item">
+                <Link to="/about" className="nav-link">
                   About
                 </Link>
               </li>
-                            <li className="nav-item">
+              <li className="nav-item">
                 <Link to="/Signup" className="nav-link">
-                  Sign-Up
+                  Sign Up
                 </Link>
               </li>
             </ul>
-            <form className="d-flex" role="search">
-              <div className="position-relative">
-  <input
-    className="form-control pe-5"
-    type="search"
-    placeholder="What are you looking for?"
-    aria-label="Search"
-  />
-  <FiSearch className="position-absolute top-50 end-0 translate-middle-y me-3 text-muted" />
-</div>
 
-               
-              <button className="btn" type="submit">
-                  <FiHeart />
-              </button>
-              <button className="btn" type="submit">
-                 <FiShoppingCart />
-              </button>
-             
+            {/* Search and Icons */}
+            <div className="d-flex align-items-center flex-column flex-lg-row w-50 w-lg-auto">
+              {/* Search Bar */}
+              <div className="position-relative me-lg-3 mb-2 mb-lg-0 w-100 w-lg-auto">
+                <input
+                  className="form-control pe-5"
+                  type="search"
+                  placeholder="What are you looking for?"
+                  aria-label="Search"
+                />
+                <FiSearch className="position-absolute top-50 end-0 translate-middle-y me-3 text-muted" />
+              </div>
 
-            </form>
+              {/* Icons */}
+              <div className="d-flex">
+                <button className="btn btn-outline-secondary me-2">
+                  <FiHeart size={18} />
+                </button>
+                <button className="btn btn-outline-secondary">
+                  <FiShoppingCart size={18} />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </nav>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FaHeart, FaEye, FaStar } from "react-icons/fa";
@@ -6,7 +6,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../App.css";
-import "./Cards.module.css";
 
 const Products = [
   {
@@ -52,19 +51,22 @@ const Products = [
 ];
 
 const ThisMonthSlider = () => {
+  const prevRef = useRef(null);
+  const nextRef = useRef(null);
+
   return (
-    <div className="container py-5">
+    <div className="container py-5 position-relative">
       {/* Header */}
       <div className="d-flex align-items-center mb-3">
         <div className="bg-danger rounded me-2" style={{ width: "6px", height: "25px" }}></div>
-        <span className="text-danger fw-semibold">Today's</span>
+        <span className="text-danger fw-semibold">This Month</span>
       </div>
 
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h2 className="fw-bold">Flash Sales</h2>
+        <h2 className="fw-bold">Best Selling Products</h2>
         <div className="d-flex gap-2">
-          <button className="btn btn-light rounded-circle p-2">←</button>
-          <button className="btn btn-light rounded-circle p-2">→</button>
+          <button ref={prevRef} className="btn btn-light rounded-circle p-2">←</button>
+          <button ref={nextRef} className="btn btn-light rounded-circle p-2">→</button>
         </div>
       </div>
 
@@ -72,18 +74,38 @@ const ThisMonthSlider = () => {
       <Swiper
         slidesPerView={4}
         spaceBetween={20}
-        navigation={true}
+        navigation={{
+          prevEl: prevRef.current,
+          nextEl: nextRef.current,
+        }}
+        onBeforeInit={(swiper) => {
+          swiper.params.navigation.prevEl = prevRef.current;
+          swiper.params.navigation.nextEl = nextRef.current;
+        }}
         modules={[Navigation]}
-        className="mySwiper "
+        className="mySwiper"
         breakpoints={{
-          0: { slidesPerView: 1 },
-          576: { slidesPerView: 2 },
-          992: { slidesPerView: 4 },
+          0: { 
+            slidesPerView: 1,
+            spaceBetween: 10
+          },
+          576: { 
+            slidesPerView: 2,
+            spaceBetween: 15  
+          },
+          768: { 
+            slidesPerView: 3,
+            spaceBetween: 15
+          },
+          992: { 
+            slidesPerView: 4,
+            spaceBetween: 20
+          },
         }}
       >
         {Products.map((item) => (
           <SwiperSlide key={item.id}>
-            <div className="card border-0 shadow-sm position-relative product-card">
+            <div className="card border-0 shadow-sm position-relative product-card h-100 mx-auto" style={{maxWidth: "280px"}}>
               {/* Discount Badge */}
               <div className="badge bg-danger position-absolute start-0 m-2">
                 -{item.discountPercent}%
@@ -100,11 +122,21 @@ const ThisMonthSlider = () => {
               </div>
 
               {/* Product Image */}
-             <div className="image1"><img src={item.img} className="card-img-top p-3" alt={item.title} /></div>
-{/* Add to Cart */}
-                <button className="btn btn-dark w-100 add-cart-btn">Add To Cart</button>
+              <div className="d-flex justify-content-center align-items-center" style={{height: "250px", backgroundColor: "#f5f5f5"}}>
+                <img 
+                  src={item.img} 
+                  className="img-fluid"
+                  style={{
+                    maxHeight: "200px", 
+                    maxWidth: "200px",
+                    objectFit: "contain"
+                  }}
+                  alt={item.title}
+                />
+              </div>
+
               {/* Product Info */}
-              <div className="card-body text-center">
+              <div className="card-body text-center d-flex flex-column">
                 <h6 className="fw-semibold mb-2">{item.title}</h6>
 
                 <div className="d-flex justify-content-center gap-2 mb-2">
@@ -120,7 +152,10 @@ const ThisMonthSlider = () => {
                     <FaStar key={i} />
                   ))}
                   <span className="text-muted ms-1">({item.ratingCount})</span>
-                </div>             
+                </div>
+
+                {/* Add to Cart */}
+                <button className="btn btn-dark w-100 add-cart-btn mt-auto">Add To Cart</button>
               </div>
             </div>
           </SwiperSlide>
