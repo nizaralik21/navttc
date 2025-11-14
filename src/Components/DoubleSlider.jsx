@@ -1,18 +1,12 @@
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
+import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FaHeart, FaEye, FaStar } from "react-icons/fa";
-import { Navigation } from "swiper/modules";
-// Import Swiper styles
+import { Grid, Navigation } from "swiper/modules";
 import 'swiper/css';
 import 'swiper/css/grid';
-import 'swiper/css/pagination';
 import "../App.css"
 import "./Cards.module.css"
 
-
-// import required modules
-import { Grid, Pagination } from 'swiper/modules';
 const Products = [
     {
       id: 1,
@@ -67,7 +61,6 @@ const Products = [
       rating: 5,
       ratingCount: 38,
       img: "/images/KidsCar.png",
-      
     },
     {
       id: 6,

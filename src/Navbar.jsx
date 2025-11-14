@@ -8,7 +8,7 @@ import { FiHeart } from "react-icons/fi";
 
 export const Navbar = () => {
   return (
-    <div className= "container">
+    <div className= "container py-4">
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container-fluid">
           <Link className="navbar-brand" to="/">

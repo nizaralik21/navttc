@@ -13,7 +13,6 @@ import {
 import { HiOutlineComputerDesktop } from "react-icons/hi2";
 import { IoWatchOutline } from "react-icons/io5";
 import { TbDeviceGamepad } from "react-icons/tb";
-import "./SearchByCatagory.css";
 
 const categories = [
   { name: "Phones", icon: <CiMobile4 size={40} /> },
@@ -64,7 +63,7 @@ const CategorySlider = () => {
         {categories.map((cat, index) => (
           <SwiperSlide key={index}>
             <a
-              href="#"
+              href="/"
               className="text-decoration-none text-center d-block category-box border rounded-4 p-4 shadow-sm"
             >
               <div className="mb-2">{cat.icon}</div>

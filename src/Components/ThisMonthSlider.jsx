@@ -120,9 +120,7 @@ const ThisMonthSlider = () => {
                     <FaStar key={i} />
                   ))}
                   <span className="text-muted ms-1">({item.ratingCount})</span>
-                </div>
-
-                
+                </div>             
               </div>
             </div>
           </SwiperSlide>

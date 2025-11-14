@@ -5,8 +5,9 @@ import Cards from "./Components/Cards";
 import SearchByCategory from "./Components/SearchByCatagory";
 import ThisMonthSlider from "./Components/ThisMonthSlider";
 import Music from "./Components/Music";
-import DoubleSlider from "./Components/DoubleSlider"
-import NewArival from "./Components/NewArival"
+import DoubleSlider from "./Components/DoubleSlider";
+import NewArival from "./Components/NewArival";
+import CustomerSupport from "./Components/CustomerSupport";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 const Home = () => {
@@ -25,21 +26,25 @@ const Home = () => {
         <Cards />
       </div>
       <div>
-        <ThisMonthSlider />
-      </div>
-      <div>
         <SearchByCategory />
       </div>
       <div>
+        <ThisMonthSlider />
+      </div>
+
+      <div>
         <Music />
+      </div>
+      
+      <div>
+        <DoubleSlider />
       </div>
       <div>
         <NewArival />
       </div>
       <div>
-        <DoubleSlider />
+        <CustomerSupport />
       </div>
-      
     </>
   );
 };
