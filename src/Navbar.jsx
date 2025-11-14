@@ -11,7 +11,7 @@ export const Navbar = () => {
           <Link className="navbar-brand fw-bold fs-3" to="/">
             Exclusive
           </Link>
-          
+
           {/* Mobile Toggle */}
           <button
             className="navbar-toggler"
@@ -69,9 +69,9 @@ export const Navbar = () => {
                 <button className="btn btn-outline-secondary me-2">
                   <FiHeart size={18} />
                 </button>
-                <button className="btn btn-outline-secondary">
+                <Link to="/cart" className="btn btn-outline-secondary">
                   <FiShoppingCart size={18} />
-                </button>
+                </Link>
               </div>
             </div>
           </div>
