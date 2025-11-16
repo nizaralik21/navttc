@@ -26,7 +26,7 @@ const Products = [
     oldPrice: 1160,
     rating: 5,
     ratingCount: 75,
-    img: "/Images/keyboar.png",
+    img: "/Images/Keyboar.png",
   },
   {
     id: 3,
@@ -46,7 +46,7 @@ const Products = [
     oldPrice: 400,
     rating: 4,
     ratingCount: 99,
-    img: "/Images/chair.png",
+    img: "/Images/Chair.png",
   },
 ];
 
