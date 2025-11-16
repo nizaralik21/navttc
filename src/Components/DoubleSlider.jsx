@@ -15,8 +15,8 @@ const Products = [
       oldPrice: 9000,
       rating: 3,
       ratingCount: 24,
-      img: "/images/DogFood.png",
-      
+      img: "Images/DogFood.png",
+    
     },
     {
       id: 2,
@@ -26,7 +26,7 @@ const Products = [
       oldPrice: 9000,
       rating: 4,
       ratingCount: 32,
-      img: "/images/Cam2.png",
+      img: "/Images/Cam2.png",
       
     },
     {
@@ -37,7 +37,7 @@ const Products = [
       oldPrice: 9000,
       rating: 5,
       ratingCount: 45,
-      img: "/images/Laptop.png",
+      img: "/Images/Laptop.png",
      
     },
     {
@@ -48,7 +48,7 @@ const Products = [
       oldPrice: 9000,
       rating: 5,
       ratingCount: 50,
-      img: "/images/Curology.png",
+      img: "/Images/Curology.png",
       
     },
     {
@@ -59,7 +59,7 @@ const Products = [
       oldPrice: 9000,
       rating: 5,
       ratingCount: 38,
-      img: "/images/KidsCar.png",
+      img: "/Images/KidsCar.png",
     },
     {
       id: 6,
@@ -69,7 +69,7 @@ const Products = [
       oldPrice: 9000,
       rating: 5,
       ratingCount: 42,
-      img: "/images/Shoes.png",
+      img: "/Images/Shoes.png",
       
     },
     {
@@ -80,7 +80,7 @@ const Products = [
       oldPrice: 9000,
       rating: 5,
       ratingCount: 42,
-      img: "/images/Game2.png",
+      img: "/Images/Game2.png",
       
     },
     {
@@ -91,7 +91,7 @@ const Products = [
       oldPrice: 9000,
       rating: 5,
       ratingCount: 42,
-      img: "/images/Jacket.png",
+      img: "/Images/Jacket.png",
       
     }
   ]

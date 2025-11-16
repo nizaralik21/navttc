@@ -7,6 +7,7 @@ import { Footer } from "./Footer";
 import SignUp from "./Sign-Up.jsx";
 import LogIn from "./LogIn.jsx";
 import Cart from "./Billing/Cart.jsx"
+import Payment from "./Billing/Payment.jsx";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
         <Route path="/signup" element={<SignUp />} /> 
         <Route path="/login" element={<LogIn />} /> 
         <Route path="cart" element={<Cart />} />
+        <Route path="/payment" element={<Payment />} />
       </Routes>
       <Footer />
     </Router>

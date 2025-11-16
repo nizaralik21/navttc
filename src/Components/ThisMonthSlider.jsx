@@ -16,7 +16,7 @@ const Products = [
     oldPrice: 160,
     rating: 3,
     ratingCount: 88,
-    img: "/images/Coat.png",
+    img: "/Images/Coat.png",
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const Products = [
     oldPrice: 1160,
     rating: 5,
     ratingCount: 75,
-    img: "/images/Bag.png",
+    img: "/Images/Bag.png",
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const Products = [
     oldPrice: 400,
     rating: 5,
     ratingCount: 99,
-    img: "/images/Cooler.png",
+    img: "/Images/Cooler.png",
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ const Products = [
     oldPrice: 400,
     rating: 4,
     ratingCount: 99,
-    img: "/images/Table.png",
+    img: "/Images/Table.png",
   },
 ];
 
@@ -58,15 +58,22 @@ const ThisMonthSlider = () => {
     <div className="container py-5 position-relative">
       {/* Header */}
       <div className="d-flex align-items-center mb-3">
-        <div className="bg-danger rounded me-2" style={{ width: "6px", height: "25px" }}></div>
+        <div
+          className="bg-danger rounded me-2"
+          style={{ width: "6px", height: "25px" }}
+        ></div>
         <span className="text-danger fw-semibold">This Month</span>
       </div>
 
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2 className="fw-bold">Best Selling Products</h2>
         <div className="d-flex gap-2">
-          <button ref={prevRef} className="btn btn-light rounded-circle p-2">←</button>
-          <button ref={nextRef} className="btn btn-light rounded-circle p-2">→</button>
+          <button ref={prevRef} className="btn btn-light rounded-circle p-2">
+            ←
+          </button>
+          <button ref={nextRef} className="btn btn-light rounded-circle p-2">
+            →
+          </button>
         </div>
       </div>
 
@@ -85,27 +92,30 @@ const ThisMonthSlider = () => {
         modules={[Navigation]}
         className="mySwiper"
         breakpoints={{
-          0: { 
+          0: {
             slidesPerView: 1,
-            spaceBetween: 10
+            spaceBetween: 10,
           },
-          576: { 
+          576: {
             slidesPerView: 2,
-            spaceBetween: 15  
+            spaceBetween: 15,
           },
-          768: { 
+          768: {
             slidesPerView: 3,
-            spaceBetween: 15
+            spaceBetween: 15,
           },
-          992: { 
+          992: {
             slidesPerView: 4,
-            spaceBetween: 20
+            spaceBetween: 20,
           },
         }}
       >
         {Products.map((item) => (
           <SwiperSlide key={item.id}>
-            <div className="card border-0 shadow-sm position-relative product-card h-100 mx-auto" style={{maxWidth: "280px"}}>
+            <div
+              className="card border-0 shadow-sm position-relative product-card h-100 mx-auto"
+              style={{ maxWidth: "280px" }}
+            >
               {/* Discount Badge */}
               <div className="badge bg-danger position-absolute start-0 m-2">
                 -{item.discountPercent}%
@@ -122,19 +132,26 @@ const ThisMonthSlider = () => {
               </div>
 
               {/* Product Image */}
-              <div className="d-flex justify-content-center align-items-center" style={{height: "250px", backgroundColor: "#f5f5f5"}}>
-                <img 
-                  src={item.img} 
+              <div
+                className="d-flex justify-content-center align-items-center"
+                style={{ height: "250px", backgroundColor: "#f5f5f5" }}
+              >
+                <img
+                  src={item.img}
                   className="img-fluid"
                   style={{
-                    maxHeight: "200px", 
+                    maxHeight: "200px",
                     maxWidth: "200px",
-                    objectFit: "contain"
+                    objectFit: "contain",
                   }}
                   alt={item.title}
                 />
               </div>
-
+              <div>
+                <button className="btn btn-dark w-100 add-cart-btn mt-auto">
+                  Add To Cart
+                </button>
+              </div>
               {/* Product Info */}
               <div className="card-body text-center d-flex flex-column">
                 <h6 className="fw-semibold mb-2">{item.title}</h6>
@@ -155,7 +172,6 @@ const ThisMonthSlider = () => {
                 </div>
 
                 {/* Add to Cart */}
-                <button className="btn btn-dark w-100 add-cart-btn mt-auto">Add To Cart</button>
               </div>
             </div>
           </SwiperSlide>

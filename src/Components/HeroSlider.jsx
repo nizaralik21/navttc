@@ -4,33 +4,34 @@ import { FaApple, FaArrowRight } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import Styles from "../All.module.css"
 
 const HeroSlider = () => {
   const slides = [
     {
       title: "iPhone 14 Series",
       heading: "Up to 10% off Voucher",
-      image: "/images/1st slide.png"
+      image: "/Images/1st slide.png"
     },
     {
       title: "iPhone 15 Pro", 
       heading: "Latest Model Exclusive",
-      image: "/images/slide2.png"
+      image: "/Images/slide2.png"
     },
     {
       title: "MacBook Air",
       heading: "Up to 15% off Voucher", 
-      image: "/images/slide3.png"
+      image: "/Images/slide3.png"
     },
     {
       title: "iPad Pro",
       heading: "New Arrival Special",
-      image: "/images/slide4.png"
+      image: "/Images/slide4.png"
     },
     {
       title: "Apple Watch",
       heading: "Limited Time Offer", 
-      image: "/images/slide5.png"
+      image: "/Images/slide5.png"
     }
   ];
 
@@ -65,7 +66,7 @@ const HeroSlider = () => {
                   <h1 className="fs-3 fs-md-2 fs-lg-1 fw-bold mb-3 mb-md-4 text-white">
                     {slide.heading}
                   </h1>
-                  <button className="btn btn-dark text-white px-3 px-md-4 py-2 d-flex align-items-center gap-2 border border-white">
+                  <button className={`btn text-white px-3 px-md-4 py-2 d-flex align-items-center gap-2 ${Styles.btn}`}>
                     Shop Now <FaArrowRight />
                   </button>
                 </div>

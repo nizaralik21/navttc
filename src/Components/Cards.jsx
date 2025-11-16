@@ -16,7 +16,7 @@ const Products = [
     oldPrice: 160,
     rating: 3,
     ratingCount: 88,
-    img: "/images/Game.png",
+    img: "/Images/Game.png",
   },
   {
     id: 2,
@@ -26,7 +26,7 @@ const Products = [
     oldPrice: 1160,
     rating: 5,
     ratingCount: 75,
-    img: "/images/keyboar.png",
+    img: "/Images/keyboar.png",
   },
   {
     id: 3,
@@ -36,7 +36,7 @@ const Products = [
     oldPrice: 400,
     rating: 5,
     ratingCount: 99,
-    img: "/images/LCD.png",
+    img: "/Images/LCD.png",
   },
   {
     id: 4,
@@ -46,7 +46,7 @@ const Products = [
     oldPrice: 400,
     rating: 4,
     ratingCount: 99,
-    img: "/images/chair.png",
+    img: "/Images/chair.png",
   },
 ];
 

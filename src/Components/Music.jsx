@@ -51,7 +51,7 @@ const Music = () => {
 
           <div className="col-lg-7 text-center">
             <img 
-              src="/images/Music.png" 
+              src="/Images/Music.png" 
               alt="Music Experience" 
               className="img-fluid"
               style={{maxHeight: "300px"}}
