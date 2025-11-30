@@ -8,6 +8,9 @@ import SignUp from "./Sign-Up.jsx";
 import LogIn from "./LogIn.jsx";
 import Cart from "./Billing/Cart.jsx"
 import Payment from "./Billing/Payment.jsx";
+import AddProduct from "./addProduct.jsx";
+import Dashboard from "./Dashboard.jsx";
+import Contact from "./Contact.jsx";
 
 const App = () => {
   return (
@@ -20,6 +23,9 @@ const App = () => {
         <Route path="/login" element={<LogIn />} /> 
         <Route path="cart" element={<Cart />} />
         <Route path="/payment" element={<Payment />} />
+        <Route path="/addProduct" element={<AddProduct />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Contact" element = {<Contact />} />
       </Routes>
       <Footer />
     </Router>

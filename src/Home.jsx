@@ -9,7 +9,6 @@ import DoubleSlider from "./Components/DoubleSlider";
 import NewArival from "./Components/NewArival";
 import CustomerSupport from "./Components/CustomerSupport";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 const Home = () => {
   return (
     <>

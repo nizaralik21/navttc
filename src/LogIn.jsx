@@ -1,6 +1,40 @@
-import React from "react";
-
+import React, { useState } from "react";
 const LogIn = () => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+    const loginhandler = async (e) =>{
+      e.preventDefault();
+      
+      if (!email || !password) {
+        alert("Please enter both email and password");
+        return;
+      }
+
+      try {
+        const response = await fetch("http://localhost:7000/api/login", {
+          method: 'POST',
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({
+            email: email,
+            password: password
+          })
+        });
+        const result = await response.json();
+        if (response.ok){
+          if(result.usertype === "seller"){
+            window.location.href = "/Dashboard"
+          }else {
+            window.location.href = "/"
+          }
+        } else {
+          alert(result.message || "Login failed. Please check your credentials.");
+        }
+      } catch (error) {
+        console.log(error);
+        alert(error.message);
+      }
+    };
   return (
     <div className="container py-5">
       <div className="row">
@@ -18,12 +52,14 @@ const LogIn = () => {
             <h1 className="text-center mb-2 fw-bold">Log In to Exculsive</h1>
             <p className="text-center text-muted mb-4">Enter Your Details Below</p>
             
-            <form>
+            <form onSubmit={loginhandler}>
               
 
               <div className="mb-3">
                 <input 
                   type="email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                   className="form-control form-control-lg border-0 border-bottom rounded-0" 
                   id="email"
                   placeholder="Email or phone number"
@@ -32,7 +68,9 @@ const LogIn = () => {
 
               <div className="mb-3">
                 <input 
-                  type="password" 
+                  type="password"
+                  value={password} 
+                  onChange={(e) => setPassword(e.target.value)}
                   className="form-control form-control-lg border-0 border-bottom rounded-0" 
                   id="password"
                   placeholder="Enter your password"
@@ -45,7 +83,7 @@ const LogIn = () => {
               >
                 Log In
         
-              </button>
+              </button >
               <a className="text-danger" href="#">Forget Password?</a>
 </div>
             </form>

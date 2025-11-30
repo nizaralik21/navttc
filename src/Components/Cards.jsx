@@ -1,69 +1,46 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation } from "swiper/modules";
 import { FaHeart, FaEye, FaStar } from "react-icons/fa";
 import "swiper/css";
 import "swiper/css/navigation";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "../App.css";
-
-const Products = [
-  {
-    id: 1,
-    title: "HAVIT HV-G92 Gamepad",
-    discountPercent: 40,
-    price: 120,
-    oldPrice: 160,
-    rating: 3,
-    ratingCount: 88,
-    img: "/Images/Game.png",
-  },
-  {
-    id: 2,
-    title: "AK-900 Wired Keyboard",
-    discountPercent: 35,
-    price: 960,
-    oldPrice: 1160,
-    rating: 5,
-    ratingCount: 75,
-    img: "/Images/Keyboar.png",
-  },
-  {
-    id: 3,
-    title: "IPS LCD Gaming Monitor",
-    discountPercent: 30,
-    price: 370,
-    oldPrice: 400,
-    rating: 5,
-    ratingCount: 99,
-    img: "/Images/LCD.png",
-  },
-  {
-    id: 4,
-    title: "S-Series Comfort Chair",
-    discountPercent: 25,
-    price: 375,
-    oldPrice: 400,
-    rating: 4,
-    ratingCount: 99,
-    img: "/Images/Chair.png",
-  },
-];
+import Styles from "./Cards.module.css";
+import axios from "axios";
 
 const Cards = () => {
+  const [productList, setProductList] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get("http://localhost:7000/api/getcardlist");
+        setProductList(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
   return (
     <div className="container py-5 position-relative">
       {/* Header */}
       <div className="d-flex align-items-center mb-3">
-        <div className="bg-danger rounded me-2" style={{ width: "6px", height: "25px" }}></div>
+        <div
+          className="bg-danger rounded me-2"
+          style={{ width: "6px", height: "25px" }}
+        ></div>
         <span className="text-danger fw-semibold">Today's</span>
       </div>
 
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h2 className="fw-bold">Flash Sales</h2>
         <div className="d-flex gap-2">
-          <button className="btn btn-light rounded-circle p-2 swiper-button-prev-custom">←</button>
-          <button className="btn btn-light rounded-circle p-2 swiper-button-next-custom">→</button>
+          <button className="btn btn-light rounded-circle p-2 swiper-button-prev-custom">
+            ←
+          </button>
+          <button className="btn btn-light rounded-circle p-2 swiper-button-next-custom">
+            →
+          </button>
         </div>
       </div>
 
@@ -72,33 +49,36 @@ const Cards = () => {
         slidesPerView={4}
         spaceBetween={20}
         navigation={{
-          nextEl: '.swiper-button-next-custom',
-          prevEl: '.swiper-button-prev-custom',
+          nextEl: ".swiper-button-next-custom",
+          prevEl: ".swiper-button-prev-custom",
         }}
         modules={[Navigation]}
         className="mySwiper"
         breakpoints={{
-          0: { 
+          0: {
             slidesPerView: 1,
-            spaceBetween: 10
+            spaceBetween: 10,
           },
-          576: { 
+          576: {
             slidesPerView: 2,
-            spaceBetween: 15  
+            spaceBetween: 15,
           },
-          768: { 
+          768: {
             slidesPerView: 3,
-            spaceBetween: 15
+            spaceBetween: 15,
           },
-          992: { 
+          992: {
             slidesPerView: 4,
-            spaceBetween: 20
+            spaceBetween: 20,
           },
         }}
       >
-        {Products.map((item) => (
+        {productList.map((item) => (
           <SwiperSlide key={item.id}>
-            <div className="card border-0 shadow-sm position-relative product-card h-100 mx-auto" style={{maxWidth: "280px"}}>
+            <div
+              className="card border-0 shadow-sm position-relative product-card h-100 mx-auto"
+              style={{ maxWidth: "280px" }}
+            >
               {/* Discount Badge */}
               <div className="badge bg-danger position-absolute start-0 m-2">
                 -{item.discountPercent}%
@@ -115,18 +95,27 @@ const Cards = () => {
               </div>
 
               {/* Product Image */}
-              <div className="image h-100">
-                <img 
-                  src={item.img} 
-                  className="bg card-img-top p-3 w-100 h-100" 
-                  alt={item.title}
-                  style={{objectFit: "contain"}}
+              <div className={`image h-100 ${Styles.image}`}>
+                <img
+                  src={item.image[0]}
+                  className={`bg card-img-top p-3 w-100 h-100 ${Styles.image0}`}
+                  alt=""
+                  style={{ objectFit: "contain" }}
+                />
+             
+                <img
+                  src={item.image[1]}
+                  className={`bg card-img-top p-3 w-100 h-100 ${Styles.image1}`}
+                  alt=""
+                  style={{ objectFit: "contain" }}
                 />
               </div>
-              
 
               {/* Product Info */}
-             <div><button className="btn btn-dark w-100 add-cart-btn mt-auto">Add To Cart</button>
+              <div>
+                <button className="btn btn-dark w-100 add-cart-btn mt-auto">
+                  Add To Cart
+                </button>
               </div>
               <div className="card-body text-center d-flex flex-column">
                 <h6 className="fw-semibold mb-2">{item.title}</h6>
@@ -147,8 +136,8 @@ const Cards = () => {
                 </div>
 
                 {/* Add to Cart */}
-                
-            </div></div>
+              </div>
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>

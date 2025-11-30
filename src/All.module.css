@@ -22,6 +22,7 @@
 
 
 
+
 .btn:hover {
     /* background-color: #fff !important; */
     border-bottom: 2px solid white !important;
@@ -30,3 +31,4 @@
 .swiper-pagination-bullet{
     background-color: white;
 }
+

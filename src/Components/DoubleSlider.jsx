@@ -1,102 +1,28 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FaHeart, FaEye, FaStar } from "react-icons/fa";
 import { Grid, Navigation } from "swiper/modules";
 import 'swiper/css';
 import 'swiper/css/grid';
 import "../App.css"
+import axios from 'axios';
 
-const Products = [
-    {
-      id: 1,
-      title: "Breed Dry Dog Food",
-      discountPercent: 15,
-      price: 380,
-      oldPrice: 9000,
-      rating: 3,
-      ratingCount: 24,
-      img: "Images/DogFood.png",
-    
-    },
-    {
-      id: 2,
-      title: "CANON EOS DSLR Camera",
-      discountPercent: 20,
-      price: 700,
-      oldPrice: 9000,
-      rating: 4,
-      ratingCount: 32,
-      img: "/Images/Cam2.png",
-      
-    },
-    {
-      id: 3,
-      title: "ASUS FHD Gaming Laptop",
-      discountPercent: 10,
-      price: 500,
-      oldPrice: 9000,
-      rating: 5,
-      ratingCount: 45,
-      img: "/Images/Laptop.png",
-     
-    },
-    {
-      id: 4,
-      title: "Curology Product Set ",
-      discountPercent: 25,
-      price: 960,
-      oldPrice: 9000,
-      rating: 5,
-      ratingCount: 50,
-      img: "/Images/Curology.png",
-      
-    },
-    {
-      id: 5,
-      title: "Kids Electric Car",
-      discountPercent: 30,
-      price: 960,
-      oldPrice: 9000,
-      rating: 5,
-      ratingCount: 38,
-      img: "/Images/KidsCar.png",
-    },
-    {
-      id: 6,
-      title: "Jr. Zoom Soccer Cleats",
-      discountPercent: 18,
-      price: 60,
-      oldPrice: 9000,
-      rating: 5,
-      ratingCount: 42,
-      img: "/Images/Shoes.png",
-      
-    },
-    {
-      id: 7,
-      title: "GP11 Shooter USB Gamepad",
-      discountPercent: 18,
-      price: 60,
-      oldPrice: 9000,
-      rating: 5,
-      ratingCount: 42,
-      img: "/Images/Game2.png",
-      
-    },
-    {
-      id: 8,
-      title: "Quilted Satin Jacket",
-      discountPercent: 18,
-      price: 60,
-      oldPrice: 9000,
-      rating: 5,
-      ratingCount: 42,
-      img: "/Images/Jacket.png",
-      
-    }
-  ]
 
 const DoubleSlider = () => {
+  const [productList, setProductList] = useState ([])
+  useEffect(() =>{
+    const fetchData = async () =>{
+      try {
+        const res = await axios.get("http://localhost:7000/api/getDoubleSliderList");
+        setProductList (res.data);
+
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchData();
+  },[])
+
   const prevRef = useRef(null);
   const nextRef = useRef(null);
 
@@ -153,7 +79,7 @@ const DoubleSlider = () => {
           },
         }}
       >
-        {Products.map((item) => (
+        {productList.map((item) => (
           <SwiperSlide key={item.id}>
             <div className="card border-0 shadow-sm position-relative product-card h-100 mx-auto" style={{maxWidth: "280px"}}>
               {/* Discount Badge */}
@@ -174,7 +100,7 @@ const DoubleSlider = () => {
               {/* Product Image */}
               <div className="d-flex justify-content-center align-items-center" style={{height: "250px", backgroundColor: "#f5f5f5"}}>
                 <img 
-                  src={item.img} 
+                  src={item.image} 
                   className="img-fluid"
                   style={{
                     maxHeight: "200px", 

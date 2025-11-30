@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const ShoppingCart = () => {
   return (
     <div className="container mt-4">
@@ -70,6 +70,7 @@ const ShoppingCart = () => {
               <button className="btn btn-danger">
                 Process to checkout
               </button>
+                <Link to="/payment">Payment</Link>
            </div>
            
           </div>          

@@ -5,8 +5,23 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import Styles from "../All.module.css"
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 
 const HeroSlider = () => {
+  const [productList, setProductList] = useState([]);
+  useEffect(() =>{
+    const fetchData = async () =>{
+      try {
+        const res = await axios.get("http://localhost:7000/api/getProductList")
+        setProductList(res.data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    fetchData();
+  },[])
   const slides = [
     {
       title: "iPhone 14 Series",
@@ -14,13 +29,13 @@ const HeroSlider = () => {
       image: "/Images/1st slide.png"
     },
     {
-      title: "iPhone 15 Pro", 
+      title: "iPhone 15 Pro",
       heading: "Latest Model Exclusive",
       image: "/Images/slide2.png"
     },
     {
       title: "MacBook Air",
-      heading: "Up to 15% off Voucher", 
+      heading: "Up to 15% off Voucher",
       image: "/Images/slide3.png"
     },
     {
@@ -30,7 +45,7 @@ const HeroSlider = () => {
     },
     {
       title: "Apple Watch",
-      heading: "Limited Time Offer", 
+      heading: "Limited Time Offer",
       image: "/Images/slide5.png"
     }
   ];
@@ -77,7 +92,7 @@ const HeroSlider = () => {
                 src={slide.image}
                 className="img-fluid"
                 style={{maxHeight: "300px", objectFit: "contain"}}
-                alt={slide.title}
+                alt={productList[index] ? productList[index].title : slide.title}
               />
             </div>
           </div>
